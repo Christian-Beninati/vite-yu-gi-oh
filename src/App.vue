@@ -1,5 +1,4 @@
 <script>
-import AppHeader from './components/AppHeader.vue';
 import AppMain from './/components/AppMain.vue';
 
 export default {
@@ -8,13 +7,16 @@ export default {
 
         }
     },
-    components: { AppHeader, AppMain }
+    components: { AppMain }
 }
 </script>
 
 <template>
-    <!-- AppHeader -->
-    <AppHeader />
+    <!-- Header -->
+    <header>
+        <h1 class="text-center mt-4">Pokévuex</h1>
+    </header>
+
 
     <!-- AppMain -->
     <AppMain />
