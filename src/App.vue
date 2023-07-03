@@ -16,9 +16,18 @@ export default {
 
     // Alla chiamata Created prendiamo i dati e li pasiamo al file STORE.js
     created() {
+        // loading true (da Store)
+        store.isLoading = true;
+
         axios.get(endpoint).then(res => {
             store.characters = res.data.docs;
-        });
+            // loading error
+        }).catch(err => {
+            console.error(err.message);
+            // loading false (da Store)
+        }).then(() => {
+            store.isLoading = false;
+        })
     }
 };
 </script>
