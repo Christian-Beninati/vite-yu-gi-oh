@@ -10,9 +10,11 @@ import { store } from './data/store.js'
 // Import AppMain
 import AppMain from './/components/AppMain.vue';
 
+// import SerchForm
+import SerchForm from './/components/character/SerchForm.vue';
 
 export default {
-    components: { AppMain, },
+    components: { AppMain, SerchForm },
 
     // Alla chiamata Created prendiamo i dati e li pasiamo al file STORE.js
     created() {
@@ -28,14 +30,17 @@ export default {
         }).then(() => {
             store.isLoading = false;
         })
-    }
+    },
 };
 </script>
 
 <template>
     <!-- Header -->
-    <header>
+    <header class="container">
         <h1 class="text-center mt-4">Pokévuex</h1>
+
+        <!-- SerchForrm -->
+        <SerchForm @option-change="onOptionChange" />
     </header>
 
 
