@@ -18,10 +18,11 @@ export default {
     data() {
         return {
             types:
-                ["Bug", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"]
+                ["Bug", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"],
+            selectedType: null,
         }
     },
-    // Alla chiamata Created prendiamo i dati e li pasiamo al file STORE.js
+    // Alla chiamata Created prendo i dati e li paso al file STORE.js
     created() {
         // loading true (da Store)
         store.isLoading = true;
@@ -51,6 +52,21 @@ export default {
                     console.error(err.message);
                 });
         },
+
+        handleReset() {
+            this.selectedType = null;
+
+            // Effettuo la chiamata API per ottenere tutti i personaggi
+            axios.get(endpoint)
+                .then(res => {
+                    // Aggiorno i dati nel componente AppMain con i risultati della chiamata API
+                    store.characters = res.data.docs;
+                })
+                .catch(err => {
+                    console.error(err.message);
+                });
+        },
+
     },
 
 };
@@ -62,7 +78,7 @@ export default {
         <h1 class="text-center mt-4">Pokévuex</h1>
 
         <!-- SerchForrm -->
-        <SerchForm :types="types" @type-selected="handleTypeSelected" />
+        <SerchForm :types="types" @type-selected="handleTypeSelected" @type-reset="handleReset" />
     </header>
 
 
