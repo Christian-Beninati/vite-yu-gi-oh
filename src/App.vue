@@ -37,6 +37,22 @@ export default {
         })
     },
 
+    methods: {
+        handleTypeSelected(selectedType) {
+            this.selectedType = selectedType;
+
+            // Effettuo la chiamata API con il tipo selezionato come parametro di query
+            axios.get(`${endpoint}?eq[type1]=${selectedType}`)
+                .then(res => {
+                    // Aggiorno i dati nel componente AppMain con i risultati della chiamata API
+                    store.characters = res.data.docs;
+                })
+                .catch(err => {
+                    console.error(err.message);
+                });
+        },
+    },
+
 };
 </script>
 
@@ -46,7 +62,7 @@ export default {
         <h1 class="text-center mt-4">Pokévuex</h1>
 
         <!-- SerchForrm -->
-        <SerchForm :types="types" />
+        <SerchForm :types="types" @type-selected="handleTypeSelected" />
     </header>
 
 
