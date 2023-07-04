@@ -17,7 +17,7 @@ export default {
     components: { AppMain, SerchForm },
     data() {
         return {
-            type:
+            types:
                 ["Bug", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"]
         }
     },
@@ -46,7 +46,7 @@ export default {
         <h1 class="text-center mt-4">Pokévuex</h1>
 
         <!-- SerchForrm -->
-        <SerchForm :types="type" />
+        <SerchForm :types="types" />
     </header>
 
 
