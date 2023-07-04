@@ -1,18 +1,19 @@
 <script>
 
 export default {
-    data() {
-        return {
-
-        }
+    props: {
+        types: {
+            type: Array,
+            required: true,
+        },
     },
-    emits: ['option-change']
 };
 </script>
 
 <template>
-    <select class="form-select " aria-label="Default select example" @change="$emit('option-change', serchTerm)">
+    <select class="form-select " aria-label="Default select example">
         <option selected>Search...</option>
+        <option v-for="typeName in types" :key="typeName">{{ typeName }}</option>
 
     </select>
 </template>

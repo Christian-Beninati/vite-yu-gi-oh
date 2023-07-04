@@ -15,7 +15,12 @@ import SerchForm from './/components/character/SerchForm.vue';
 
 export default {
     components: { AppMain, SerchForm },
-
+    data() {
+        return {
+            type:
+                ["Bug", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"]
+        }
+    },
     // Alla chiamata Created prendiamo i dati e li pasiamo al file STORE.js
     created() {
         // loading true (da Store)
@@ -31,6 +36,7 @@ export default {
             store.isLoading = false;
         })
     },
+
 };
 </script>
 
@@ -40,7 +46,7 @@ export default {
         <h1 class="text-center mt-4">Pokévuex</h1>
 
         <!-- SerchForrm -->
-        <SerchForm @option-change="onOptionChange" />
+        <SerchForm :types="type" />
     </header>
 
 
